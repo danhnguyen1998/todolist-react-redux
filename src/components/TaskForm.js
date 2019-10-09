@@ -42,23 +42,27 @@ class TaskForm extends React.Component {
             status: false
         });
     };
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.itemEditting && this.props.itemEditting.id !== null) {
             this.setState({
                 id: this.props.itemEditting.id,
                 name: this.props.itemEditting.name,
                 status: this.props.itemEditting.status
             });
+        } else {
+            this.onClear();
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps && nextProps.itemEditting) {
             this.setState({
                 id: nextProps.itemEditting.id,
                 name: nextProps.itemEditting.name,
                 status: nextProps.itemEditting.status
             });
+        } else {
+            this.onClear();
         }
     }
 

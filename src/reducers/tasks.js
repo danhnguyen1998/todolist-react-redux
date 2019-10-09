@@ -38,6 +38,8 @@ var findIndex = (tasks, id) => {
 };
 
 var myReducer = (state = initialState, action) => {
+    var index;
+    var id;
     switch (action.type) {
         case types.LIST_ALL:
             return state;
@@ -51,29 +53,28 @@ var myReducer = (state = initialState, action) => {
                 task.id = generateID();
                 state.push(task);
             } else {
-                var index = findIndex(state, task.id);
+                index = findIndex(state, task.id);
                 state[index] = task;
             }
             localStorage.setItem("tasks", JSON.stringify(state));
             return [...state];
         case types.UPDATE_STATUS_TASK:
-            var id = action.id;
-            var index = findIndex(state, id);
+            id = action.id;
+            index = findIndex(state, id);
             var cloneTask = { ...state[index] };
             cloneTask.status = !cloneTask.status;
             state[index] = cloneTask;
             localStorage.setItem("tasks", JSON.stringify(state));
             return [...state];
         case types.DELETE_TASK:
-            var id = action.id;
-            var index = findIndex(state, id);
+            id = action.id;
+            index = findIndex(state, id);
             state.splice(index, 1);
             localStorage.setItem("tasks", JSON.stringify(state));
             return [...state];
         default:
             return state;
     }
-    return state;
 };
 
 export default myReducer;

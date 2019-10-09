@@ -6,10 +6,6 @@ import { connect } from "react-redux";
 import * as actions from "./actions/index";
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     onToggleForm = () => {
         if (this.props.itemEditting && this.props.itemEditting.id !== "") {
             this.props.onClearTask({

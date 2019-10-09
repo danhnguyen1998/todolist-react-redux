@@ -3,10 +3,6 @@ import * as actions from "../actions/index";
 import { connect } from "react-redux";
 
 class TaskItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     onUpdateStatus = () => {
         this.props.onUpdateStatus(this.props.task.id);
     };

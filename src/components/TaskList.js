@@ -3,9 +3,6 @@ import TaskItem from "./TaskItem";
 import { connect } from "react-redux";
 
 class TaskList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         let { tasks } = this.props;
         let elementTasks = tasks.map((task, index) => {
